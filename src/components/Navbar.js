@@ -43,7 +43,7 @@ class Navbar extends Component {
               textDecoration: 'none',
             }}
           >
-            Kevin & Ivana
+            Ivana & Kevin
           </Link>
         </h1>
         <div className="nav-items-container">
