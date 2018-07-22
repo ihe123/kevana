@@ -24,6 +24,7 @@ class Navbar extends Component {
   }
 
   componentDidMount() {
+    this.toggleNavTransparency();
     window.addEventListener('scroll', this.toggleNavTransparency);
   }
 
