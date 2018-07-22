@@ -24,7 +24,6 @@ class Navbar extends Component {
   }
 
   componentDidMount() {
-    this.toggleNavTransparency();
     window.addEventListener('scroll', this.toggleNavTransparency);
   }
 
@@ -38,6 +37,7 @@ class Navbar extends Component {
       <div className="nav-link-container">
         <h1 className="nav-link brand">
           <Link
+            className="nav-link-transparent"
             to="/"
             style={{
               textDecoration: 'none',
@@ -49,6 +49,7 @@ class Navbar extends Component {
         <div className="nav-items-container">
           <h2 className="nav-link">
             <Link
+              className="nav-link-transparent"
               to="/rsvp"
               style={{
                 textDecoration: 'none',
@@ -59,6 +60,7 @@ class Navbar extends Component {
           </h2>
           <h2 className="nav-link">
             <Link
+              className="nav-link-transparent"
               to="/gallery"
               style={{
                 textDecoration: 'none',
@@ -69,6 +71,7 @@ class Navbar extends Component {
           </h2>
           <h2 className="nav-link">
             <Link
+              className="nav-link-transparent"
               to="/about-us"
               style={{
                 textDecoration: 'none',
