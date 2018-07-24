@@ -1,7 +1,14 @@
-import React, {Component} from 'react'
-import Link from 'gatsby-link'
+import React, {Component} from 'react';
+import Link from 'gatsby-link';
+import { firebaseAuth } from '../services/firebaseConstants';
 
 class Navbar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loggedIn: false
+    };
+  }
 
   toggleNavTransparency = event => {
     const nav = document.querySelector('.navbar');
@@ -25,6 +32,18 @@ class Navbar extends Component {
 
   componentDidMount() {
     window.addEventListener('scroll', this.toggleNavTransparency);
+
+    firebaseAuth().onAuthStateChanged( user => {
+      if (user) {
+        this.setState({
+          loggedIn: true
+        })
+      } else {
+        this.setState({
+          loggedIn: false
+        })
+      }
+    })
   }
 
   componentWillUnmount() {
@@ -32,6 +51,8 @@ class Navbar extends Component {
   }
 
   render() {
+    const { loggedIn } = this.state;
+
     return (
       <div className="navbar">
       <div className="nav-link-container">
@@ -61,6 +82,17 @@ class Navbar extends Component {
           <h2 className="nav-link">
             <Link
               className="nav-link-transparent"
+              to="/venue"
+              style={{
+                textDecoration: 'none',
+              }}
+            >
+              Venue
+            </Link>
+          </h2>
+          <h2 className="nav-link">
+            <Link
+              className="nav-link-transparent"
               to="/gallery"
               style={{
                 textDecoration: 'none',
@@ -80,6 +112,21 @@ class Navbar extends Component {
               About Us
             </Link>
           </h2>
+          {
+            loggedIn ?
+            <h2 className="nav-link">
+              <Link
+                className="nav-link-transparent"
+                to="/logout"
+                style={{
+                  textDecoration: 'none',
+                }}
+              >
+                Logout
+              </Link>
+            </h2> :
+            null
+          }
         </div>
       </div>
     </div>
