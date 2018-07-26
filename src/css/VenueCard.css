@@ -6,3 +6,9 @@
   height: 50vh;
   width: 100vw;
 }
+
+@media only screen and (max-width: 425px) {
+  .venue-container > h2 {
+    font-size: 1.2rem;
+  }
+}
