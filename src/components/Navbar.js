@@ -93,7 +93,7 @@ class Navbar extends Component {
           <h2 className="nav-link">
             <Link
               className="nav-link-transparent"
-              to="/gallery"
+              to="/photo-gallery"
               style={{
                 textDecoration: 'none',
               }}
