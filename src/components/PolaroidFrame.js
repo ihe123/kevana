@@ -1,6 +1,5 @@
 import React from 'react';
 import '../css/PolaroidFrame.css';
-import pic1 from '../img/DSC05087.jpg';
 
 const PolaroidFrame = props => {
   const { url, caption } = props;
