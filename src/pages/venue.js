@@ -57,7 +57,7 @@ class VenuePage extends Component {
                   name={venueDetails.ceremony.locationName} 
                   address={venueDetails.ceremony.locationAddress} 
                   startTime={venueDetails.ceremony.startTime} 
-                  background='#77878B'
+                  background='#FBBEA7'
                 />
                 <VenueCard
                   type='Banquet' 
