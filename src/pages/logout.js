@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { logout } from '../services/auth';
-
+import '../css/Logout.css';
 
 class login extends Component {
   constructor(props) {
@@ -25,7 +25,7 @@ class login extends Component {
   render() {
     return (
       <div className="splash-container" style={{background: '#F48788'}}>
-        <button onClick={this.handleLogout}>Logout</button>
+        <button className="logout-button" onClick={this.handleLogout}>Logout</button>
       </div>
     )
   }

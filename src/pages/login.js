@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { loginEmail } from '../services/auth';
 import Link from 'gatsby-link';
+import '../css/Login.css';
 
 class login extends Component {
   constructor(props) {
@@ -29,7 +30,7 @@ class login extends Component {
 
     loginEmail(email, password)
       .then( () => {
-        console.log('logged in!');
+        // console.log('logged in!');
         window.location.href = '/';
       })
       .catch( err => {
@@ -40,7 +41,7 @@ class login extends Component {
   render() {
     return (
       <div className="splash-container" style={{background: '#F48788'}}>
-        <form onSubmit={this.handleSubmit}>
+        <form className="login-form" onSubmit={this.handleSubmit}>
           <label>
             Email:
             <input type="text" value={this.state.email} onChange={this.handleEmailChange} />
@@ -49,7 +50,7 @@ class login extends Component {
             Password:
             <input type="password" value={this.state.password} onChange={this.handlePasswordChange} />
           </label>
-          <input type="submit" value="Login" />
+          <input className="form-submit-button" type="submit" value="Login" />
         </form>
       </div>
     )
