@@ -21,7 +21,7 @@ class VenuePage extends Component {
       .then(snapshot => {
         // console.log('snapshot', snapshot);
         const newVenueDetails = snapshot.val();
-        console.log('newVenueDetails', newVenueDetails);
+        // console.log('newVenueDetails', newVenueDetails);
         this.setState({
           venueDetails: {...venueDetails, ...newVenueDetails},
           loading: false
