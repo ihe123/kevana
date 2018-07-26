@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
+
+.polaroid-outer-container {
+  margin: 20px 10px;
+  padding-bottom: 50px;
+  box-shadow: 2px 2px 2px 1px grey;
+  display: inline-block;
+}
+
+.polaroid-inner-container {
+  text-align: center;
+}
+
+.polaroid-image {
+  max-height: 33vh;
+  padding: 1rem;
+  object-fit: contain;
+}
+
+.polaroid-caption {
+  margin: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-family: 'Permanent Marker', cursive;
+}
