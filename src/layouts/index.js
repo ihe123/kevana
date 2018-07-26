@@ -6,6 +6,8 @@ import './index.css'
 import Navbar from '../components/Navbar'
 import '../css/Navbar.css'
 
+import heartIcon from '../svg/ic_favorite_black_24px.svg';
+
 const Layout = ({ children, data }) => (
   <div>
     <Helmet
@@ -22,6 +24,9 @@ const Layout = ({ children, data }) => (
       }}
     >
       {children()}
+    </div>
+    <div className="splash-container" style={{background: '#77878B', height: '20vh', width: '100vw'}}>
+      <p style={{color: 'white'}}>Made with <img className="svg-icon" src={heartIcon} alt="heart icon"/> in San Francisco</p>
     </div>
   </div>
 )
