@@ -13,7 +13,7 @@ class Navbar extends Component {
   toggleNavTransparency = event => {
     const nav = document.querySelector('.navbar');
     const navLinks = document.querySelectorAll('.nav-link > a');
-    if (document.documentElement.scrollTop) {
+    if (Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)) {
       nav.classList.add('nav-colored');
       nav.classList.remove('nav-transparent');
       navLinks.forEach( link => {
