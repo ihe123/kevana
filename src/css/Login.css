@@ -1,16 +1,16 @@
-.login-form {
+form {
   display: flex;
   flex-direction: column;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
   Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-.login-form > label {
+form > label {
   text-align: left;
   color: white;
 }
 
-.form-submit-button {
+input[type=submit] {
   background: #C3E5DA;
   border-radius: 0.5rem;
   border: none;
