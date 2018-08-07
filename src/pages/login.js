@@ -8,7 +8,8 @@ class login extends Component {
     super(props);
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      wrongPassword: false
     };
   }
 
@@ -34,11 +35,17 @@ class login extends Component {
         window.location.href = '/';
       })
       .catch( err => {
-        console.log('error in creating new user: ', err);
+        console.log('error occurred: ', err);
+        if (err.code === 'auth/wrong-password') {
+          this.setState({
+            wrongPassword: true
+          });
+        }
       })
   }
 
   render() {
+    const { wrongPassword } = this.state;
     return (
       <div className="splash-container" style={{background: '#F48788'}}>
         <form className="login-form" onSubmit={this.handleSubmit}>
@@ -51,6 +58,7 @@ class login extends Component {
             <input type="password" value={this.state.password} onChange={this.handlePasswordChange} />
           </label>
           <input className="form-submit-button" type="submit" value="Login" />
+          { wrongPassword ? <p style={{color: 'white'}}>Invalid username or password.</p> : null }
         </form>
       </div>
     )
