@@ -30,6 +30,7 @@ class signup extends Component {
     auth(email, password)
       .then( () => {
         console.log('new user signed up!');
+        window.location.href = '/';
       })
       .catch( err => {
         console.log('error in creating new user: ', err);
