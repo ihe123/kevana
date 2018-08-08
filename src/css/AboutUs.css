@@ -1,0 +1,9 @@
+.about-us-body {
+  padding: 4rem;
+  max-width: 800px;
+  margin: auto;
+}
+
+.about-us-body > p {
+  padding-bottom: 1rem;
+}
