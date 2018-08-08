@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { loginEmail } from '../services/auth';
+import { loginEmail, resetPassword } from '../services/auth';
 import Link from 'gatsby-link';
 import '../css/Login.css';
 
@@ -9,7 +9,10 @@ class login extends Component {
     this.state = {
       email: '',
       password: '',
-      wrongPassword: false
+      wrongPassword: false,
+      validEmail: true,
+      userFound: true,
+      passwordResetEmailSent: false
     };
   }
 
@@ -25,6 +28,33 @@ class login extends Component {
     });
   }
 
+  handleForgotPassword = () => {
+    const { email } = this.state;
+    resetPassword(email)
+      .then( () => {
+        console.log('Password reset email sent');
+        this.setState({
+          passwordResetEmailSent: true
+        });
+      })
+      .catch( err => {
+        if (err.code === 'auth/invalid-email') {
+          console.log('invalid email address');
+          this.setState({
+            validEmail: false
+          });
+        } else if (err.code === 'auth/user-not-found') {
+          console.log('no user found with that email address');
+          this.setState({
+            userFound: false,
+            validEmail: true
+          });
+        } else {
+          console.log('Error occurred when sending reset email: ', err);
+        }
+      })
+  }
+
   handleSubmit = event => {
     event.preventDefault();
     const { email, password } = this.state;
@@ -35,17 +65,30 @@ class login extends Component {
         window.location.href = '/';
       })
       .catch( err => {
-        console.log('error occurred: ', err);
+        console.log('Login error occurred: ', err);
         if (err.code === 'auth/wrong-password') {
           this.setState({
-            wrongPassword: true
+            wrongPassword: true,
+            validEmail: true,
+            userFound: true
+          });
+        } else if (err.code === 'auth/user-not-found') {
+          console.log('no user found with that email address');
+          this.setState({
+            userFound: false,
+            validEmail: true
+          });
+        } else if (err.code === 'auth/invalid-email') {
+          console.log('invalid email address');
+          this.setState({
+            validEmail: false
           });
         }
       })
   }
 
   render() {
-    const { wrongPassword } = this.state;
+    const { wrongPassword, userFound, validEmail } = this.state;
     return (
       <div className="splash-container" style={{background: '#F48788'}}>
         <form className="login-form" onSubmit={this.handleSubmit}>
@@ -58,7 +101,18 @@ class login extends Component {
             <input type="password" value={this.state.password} onChange={this.handlePasswordChange} />
           </label>
           <input className="form-submit-button" type="submit" value="Login" />
-          { wrongPassword ? <p style={{color: 'white'}}>Invalid username or password.</p> : null }
+          { (wrongPassword || !validEmail) ?
+              <div>
+                <p style={{color: 'white'}}>Invalid username or password.</p>
+                <button onClick={this.handleForgotPassword}>Forgot Password</button>
+              </div> :
+              null 
+          }
+          { 
+            !userFound ?
+              <p style={{color: 'white'}}>No user found with that email address.</p> :
+              null
+          }
         </form>
       </div>
     )
