@@ -7,3 +7,13 @@
 .about-us-body > p {
   padding-bottom: 1rem;
 }
+
+.about-us-image {
+  width: 400px;
+}
+
+@media only screen and (max-width: 500px) {
+  .about-us-image {
+    width: 300px;
+  }
+}
