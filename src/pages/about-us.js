@@ -32,7 +32,7 @@ class AboutUsPage extends Component {
         });
       });
     
-    storage.ref('IMG_2635.JPG').getDownloadURL().then(url => {
+    storage.ref('IMG_2635_square.JPG').getDownloadURL().then(url => {
       this.setState({
         heroImageUrl: url
       });
@@ -54,7 +54,7 @@ class AboutUsPage extends Component {
                   <h1 style={{color: 'white', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>About Us</h1>
                 </div>
                 <div style={{textAlign: 'center', marginTop: '4rem'}}>
-                  <img src={heroImageUrl} style={{maxWidth: '400px', margin: 'auto', borderRadius: '50%', paddingRight: '1rem', paddingLeft: '1rem'}}/>
+                  <img src={heroImageUrl} style={{maxWidth: '300px', margin: 'auto', borderRadius: '50%', paddingRight: '1rem', paddingLeft: '1rem'}}/>
                 </div>
                 <ReactMarkdown className="about-us-body" source={aboutUsMarkdown} />
               </div>
