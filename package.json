@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "author": "Kevin Xu <kevin.hanjie.xu@gmail.com>",
   "dependencies": {
+    "@firebase/app": "^0.3.3",
     "firebase": "^5.3.0",
     "firebaseui": "^3.1.1",
     "gatsby": "next",
