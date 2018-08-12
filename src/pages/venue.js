@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Link from 'gatsby-link'
 import UnauthenticatedSplash from '../components/UnauthenticatedSplash';
 import VenueCard from '../components/VenueCard';
 import { ref } from '../services/firebaseConstants';
@@ -31,7 +30,7 @@ class VenuePage extends Component {
         console.log('error in getting rsvp data: ', err);
         this.setState({
           loading: false
-        })
+        });
       })
   }
 
@@ -47,10 +46,6 @@ class VenuePage extends Component {
             </div> :
             Object.keys(venueDetails).length === 0 ?
               <UnauthenticatedSplash/> :
-              // <div className="splash-container" style={{background: '#77878B'}}>
-              //   <h1 style={{color: 'white', textAlign: 'center'}}>Banquet</h1>
-              //   <h2 style={{color: 'white', textAlign: 'center'}}>{venueDetails.banquet.locationName}</h2>
-              // </div>
               <div>
                 <VenueCard 
                   type='Ceremony' 

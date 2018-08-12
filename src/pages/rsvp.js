@@ -1,5 +1,4 @@
-import React, { Component } from 'react'
-import Link from 'gatsby-link'
+import React, { Component } from 'react';
 import UnauthenticatedSplash from '../components/UnauthenticatedSplash';
 import { ref } from '../services/firebaseConstants';
 
