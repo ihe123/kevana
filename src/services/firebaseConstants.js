@@ -15,7 +15,11 @@ const config = {
 
 firebase.initializeApp(config);
 
+const firestoreTimestampFix = firebase.firestore();
+const settings = {timestampsInSnapshots: true};
+firestoreTimestampFix.settings(settings);
+
 export const ref = firebase.database().ref();
 export const firebaseAuth = firebase.auth;
 export const storage = firebase.storage();
-export const firestore = firebase.firestore();
+export const firestore = firestoreTimestampFix;
