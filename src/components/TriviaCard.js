@@ -4,10 +4,6 @@ import GameRoomsList from './GameRoomsList';
 import '../css/TriviaCard.css';
 
 class TriviaCard extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { number, choices, question, gameRoom, hostNewGame, handleRadioSelection, handleSubmitAnswer, joinGame, answerFrequencyData, selectedChoice } = this.props;
     

@@ -3,6 +3,7 @@ import { ref, storage } from '../services/firebaseConstants';
 import PolaroidFrame from '../components/PolaroidFrame';
 import '../css/PhotoGallery.css';
 import UnauthenticatedSplash from '../components/UnauthenticatedSplash';
+import Layout from '../components/layout';
 
 class PhotoGalleryPage extends Component {
   constructor(props) {
@@ -97,26 +98,28 @@ class PhotoGalleryPage extends Component {
   render() {
     const { photos, loading } = this.state;
     return (
-      <div>
-        {
-          loading === true ?
-            <div className="splash-container" style={{background: '#77878B'}}>
-              <h1 style={{color: 'white', textAlign: 'center'}}>Loading Photo Gallery...</h1>
-            </div> :
-            photos.length === 0 ?
-              <UnauthenticatedSplash/> :
-              <div>
-                <div className="secondary-page" style={{background: '#EAADAD'}}>
-                  <h1 style={{color: 'white', textAlign: 'center'}}>Photo Gallery</h1>
+      <Layout>
+        <div>
+          {
+            loading === true ?
+              <div className="splash-container" style={{background: '#77878B'}}>
+                <h1 style={{color: 'white', textAlign: 'center'}}>Loading Photo Gallery...</h1>
+              </div> :
+              photos.length === 0 ?
+                <UnauthenticatedSplash/> :
+                <div>
+                  <div className="secondary-page" style={{background: '#EAADAD'}}>
+                    <h1 style={{color: 'white', textAlign: 'center'}}>Photo Gallery</h1>
+                  </div>
+                  <div className='polaroids-gallery'>
+                    {photos.map((photo) => (
+                      <PolaroidFrame key={ photo.url.split('?')[0] } url={ photo.url } caption={ photo.caption }/>
+                    ))}
+                  </div>
                 </div>
-                <div className='polaroids-gallery'>
-                  {photos.map((photo) => (
-                    <PolaroidFrame key={ photo.url.split('?')[0] } url={ photo.url } caption={ photo.caption }/>
-                  ))}
-                </div>
-              </div>
-        }
-      </div>
+          }
+        </div>
+      </Layout>
     )
   }
 }

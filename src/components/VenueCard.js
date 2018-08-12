@@ -3,15 +3,6 @@ import '../css/VenueCard.css';
 
 const VenueCard = props => {
   const { type, name, address, startTime, background } = props;
-  // const placeholderProps = {
-  //   type: 'Banquet',
-  //   name: 'Tai Wu',
-  //   address: '300 El Camino',
-  //   startTime: '6:00 PM',
-  //   background: '#77878B' 
-  // };
-
-  // const { type, name, address, startTime, background } = placeholderProps;
 
   return (
     <div className='venue-container' style={ { background, color: 'white' } }>

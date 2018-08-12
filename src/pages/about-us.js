@@ -3,6 +3,7 @@ import { ref, storage } from '../services/firebaseConstants';
 import ReactMarkdown from 'react-markdown';
 import UnauthenticatedSplash from '../components/UnauthenticatedSplash';
 import '../css/AboutUs.css';
+import Layout from '../components/layout';
 
 class AboutUsPage extends Component {
   constructor(props) {
@@ -41,7 +42,7 @@ class AboutUsPage extends Component {
   render() {
     const { aboutUsMarkdown, loading, heroImageUrl } = this.state;
     return (
-      <div>
+      <Layout>
         { loading === true ?
             <div className="splash-container" style={{background: '#77878B'}}>
               <h1 style={{color: 'white', textAlign: 'center'}}>Loading...</h1>
@@ -58,7 +59,7 @@ class AboutUsPage extends Component {
                 <ReactMarkdown className="about-us-body" source={aboutUsMarkdown} />
               </div>
         }
-      </div>
+      </Layout>
     )
   }
 }

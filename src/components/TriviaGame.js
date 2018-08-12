@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { firestore } from '../services/firebaseConstants';
 import { OrdinalFrame } from 'semiotic';
 import TriviaChoices from './TriviaChoices';
 

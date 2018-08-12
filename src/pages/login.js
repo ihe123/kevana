@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { loginEmail, resetPassword } from '../services/auth';
-import Link from 'gatsby-link';
 import '../css/Login.css';
+import Layout from '../components/layout';
 
 class login extends Component {
   constructor(props) {
@@ -90,31 +90,33 @@ class login extends Component {
   render() {
     const { wrongPassword, userFound, validEmail } = this.state;
     return (
-      <div className="splash-container" style={{background: '#F48788'}}>
-        <form className="login-form" onSubmit={this.handleSubmit}>
-          <label>
-            Email:
-            <input type="text" value={this.state.email} onChange={this.handleEmailChange} />
-          </label>
-          <label>
-            Password:
-            <input type="password" value={this.state.password} onChange={this.handlePasswordChange} />
-          </label>
-          <input className="form-submit-button" type="submit" value="Login" />
-          { (wrongPassword || !validEmail) ?
-              <div>
-                <p style={{color: 'white'}}>Invalid username or password.</p>
-                <button onClick={this.handleForgotPassword}>Forgot Password</button>
-              </div> :
-              null 
-          }
-          { 
-            !userFound ?
-              <p style={{color: 'white'}}>No user found with that email address.</p> :
-              null
-          }
-        </form>
-      </div>
+      <Layout>
+        <div className="splash-container" style={{background: '#F48788'}}>
+          <form className="login-form" onSubmit={this.handleSubmit}>
+            <label>
+              Email:
+              <input type="text" value={this.state.email} onChange={this.handleEmailChange} />
+            </label>
+            <label>
+              Password:
+              <input type="password" value={this.state.password} onChange={this.handlePasswordChange} />
+            </label>
+            <input className="form-submit-button" type="submit" value="Login" />
+            { (wrongPassword || !validEmail) ?
+                <div>
+                  <p style={{color: 'white'}}>Invalid username or password.</p>
+                  <button onClick={this.handleForgotPassword}>Forgot Password</button>
+                </div> :
+                null 
+            }
+            { 
+              !userFound ?
+                <p style={{color: 'white'}}>No user found with that email address.</p> :
+                null
+            }
+          </form>
+        </div>
+      </Layout>
     )
   }
 }

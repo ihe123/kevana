@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import UnauthenticatedSplash from '../components/UnauthenticatedSplash';
 import { ref } from '../services/firebaseConstants';
+import Layout from '../components/layout';
 
 class RsvpPage extends Component {
   constructor (props) {
@@ -33,19 +34,21 @@ class RsvpPage extends Component {
   render() {
     const { rsvpLink, loading } = this.state;
     return (
-      <div>
-        {
-          loading === true ?
-            <div className="splash-container" style={{background: '#77878B'}}>
-              <h1 style={{color: 'white', textAlign: 'center'}}>Loading...</h1>
-            </div> :
-            rsvpLink === '' ?
-              <UnauthenticatedSplash/> :
+      <Layout>
+        <div>
+          {
+            loading === true ?
               <div className="splash-container" style={{background: '#77878B'}}>
-                <h1 style={{color: 'white', textAlign: 'center'}}>RSVP Link: <a href={rsvpLink}>Google Form</a></h1>
-              </div>            
-        }
-      </div>
+                <h1 style={{color: 'white', textAlign: 'center'}}>Loading...</h1>
+              </div> :
+              rsvpLink === '' ?
+                <UnauthenticatedSplash/> :
+                <div className="splash-container" style={{background: '#77878B'}}>
+                  <h1 style={{color: 'white', textAlign: 'center'}}>RSVP Link: <a href={rsvpLink}>Google Form</a></h1>
+                </div>            
+          }
+        </div>
+      </Layout>
     )
   }
 }

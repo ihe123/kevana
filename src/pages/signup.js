@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { auth } from '../services/auth';
-
+import Layout from '../components/layout';
 
 class signup extends Component {
   constructor(props) {
@@ -39,19 +39,21 @@ class signup extends Component {
 
   render() {
     return (
-      <div className="splash-container" style={{background: '#F48788'}}>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Email:
-            <input type="text" value={this.state.email} onChange={this.handleEmailChange} />
-          </label>
-          <label>
-            Password:
-            <input type="password" value={this.state.password} onChange={this.handlePasswordChange} />
-          </label>
-          <input type="submit" value="Sign Up" />
-        </form>
-      </div>
+      <Layout>
+        <div className="splash-container" style={{background: '#F48788'}}>
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              Email:
+              <input type="text" value={this.state.email} onChange={this.handleEmailChange} />
+            </label>
+            <label>
+              Password:
+              <input type="password" value={this.state.password} onChange={this.handlePasswordChange} />
+            </label>
+            <input type="submit" value="Sign Up" />
+          </form>
+        </div>
+      </Layout>
     )
   }
 }

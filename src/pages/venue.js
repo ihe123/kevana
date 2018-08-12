@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import UnauthenticatedSplash from '../components/UnauthenticatedSplash';
 import VenueCard from '../components/VenueCard';
 import { ref } from '../services/firebaseConstants';
+import Layout from '../components/layout';
 
 class VenuePage extends Component {
   constructor (props) {
@@ -38,32 +39,34 @@ class VenuePage extends Component {
     const { venueDetails, loading } = this.state;
 
     return (
-      <div>
-        {
-          loading === true ?
-            <div className="splash-container" style={{background: '#77878B'}}>
-              <h1 style={{color: 'white', textAlign: 'center'}}>Loading...</h1>
-            </div> :
-            Object.keys(venueDetails).length === 0 ?
-              <UnauthenticatedSplash/> :
-              <div>
-                <VenueCard 
-                  type='Ceremony' 
-                  name={venueDetails.ceremony.locationName} 
-                  address={venueDetails.ceremony.locationAddress} 
-                  startTime={venueDetails.ceremony.startTime} 
-                  background='#FBBEA7'
-                />
-                <VenueCard
-                  type='Banquet' 
-                  name={venueDetails.banquet.locationName} 
-                  address={venueDetails.banquet.locationAddress} 
-                  startTime={venueDetails.banquet.startTime} 
-                  background='#F48788'
-                />
-              </div>
-        }
-      </div>
+      <Layout>
+        <div>
+          {
+            loading === true ?
+              <div className="splash-container" style={{background: '#77878B'}}>
+                <h1 style={{color: 'white', textAlign: 'center'}}>Loading...</h1>
+              </div> :
+              Object.keys(venueDetails).length === 0 ?
+                <UnauthenticatedSplash/> :
+                <div>
+                  <VenueCard 
+                    type='Ceremony' 
+                    name={venueDetails.ceremony.locationName} 
+                    address={venueDetails.ceremony.locationAddress} 
+                    startTime={venueDetails.ceremony.startTime} 
+                    background='#FBBEA7'
+                  />
+                  <VenueCard
+                    type='Banquet' 
+                    name={venueDetails.banquet.locationName} 
+                    address={venueDetails.banquet.locationAddress} 
+                    startTime={venueDetails.banquet.startTime} 
+                    background='#F48788'
+                  />
+                </div>
+          }
+        </div>
+      </Layout>
     )
   }
 }

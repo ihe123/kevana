@@ -4,6 +4,7 @@ import UsersList from '../components/UsersList';
 import TriviaFinishedCard from '../components/TriviaFinishedCard';
 import { firebaseAuth, firestore } from '../services/firebaseConstants';
 import UnauthenticatedSplash from '../components/UnauthenticatedSplash';
+import Layout from '../components/layout';
 
 class TriviaPage extends Component {
   constructor(props) {
@@ -195,7 +196,7 @@ class TriviaPage extends Component {
           }
         })
   
-      if (finalQuestion != currentQuestionNumber) {
+      if (finalQuestion !== currentQuestionNumber) {
         this.setState(prevState => {
           const prevQuestionNumber = parseInt(prevState.currentQuestionNumber)
           return {
@@ -226,7 +227,7 @@ class TriviaPage extends Component {
 
   componentWillUnmount() {
     const { gameRoom } = this.state;
-    if (gameRoom != 'waitingRoom') {
+    if (gameRoom !== 'waitingRoom') {
       this.unsubFromGame();
     }
   }
@@ -270,36 +271,38 @@ class TriviaPage extends Component {
       authed
     } = this.state;
     return (
-      <div>
-        <div className="secondary-page" style={{background: '#EAADAD'}}>
-          <h1 style={{color: 'white', textAlign: 'center'}}>Trivia!</h1>
+      <Layout>
+        <div>
+          <div className="secondary-page" style={{background: '#EAADAD'}}>
+            <h1 style={{color: 'white', textAlign: 'center'}}>Trivia!</h1>
+          </div>
+          {
+            ! authed ?
+              <UnauthenticatedSplash /> :
+              finishedTriviaGame ?
+                <TriviaFinishedCard/> :
+                <TriviaCard
+                  number={currentQuestionNumber} 
+                  choices={currentChoices} 
+                  question={currentQuestionBody} 
+                  gameRoom={gameRoom}
+                  answerFrequencyData={answerFrequencyData}
+                  hostNewGame={this.hostNewGame} 
+                  handleRadioSelection={this.handleRadioSelection} 
+                  handleSubmitAnswer={this.handleSubmitAnswer} 
+                  joinGame={this.joinGame}
+                  selectedChoice={selectedChoice}
+                />
+          }
+          {
+            (gameRoom !== 'waitingRoom' && !finishedTriviaGame) ?
+              <UsersList 
+                users={users} 
+                gameRoom={gameRoom}/> :
+              null
+          }
         </div>
-        {
-          ! authed ?
-            <UnauthenticatedSplash /> :
-            finishedTriviaGame ?
-              <TriviaFinishedCard/> :
-              <TriviaCard
-                number={currentQuestionNumber} 
-                choices={currentChoices} 
-                question={currentQuestionBody} 
-                gameRoom={gameRoom}
-                answerFrequencyData={answerFrequencyData}
-                hostNewGame={this.hostNewGame} 
-                handleRadioSelection={this.handleRadioSelection} 
-                handleSubmitAnswer={this.handleSubmitAnswer} 
-                joinGame={this.joinGame}
-                selectedChoice={selectedChoice}
-              />
-        }
-        {
-          gameRoom != 'waitingRoom' ?
-            <UsersList 
-              users={users} 
-              gameRoom={gameRoom}/> :
-            null
-        }
-      </div>
+      </Layout>
     )
   }
 }
