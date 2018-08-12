@@ -104,6 +104,17 @@ class Navbar extends Component {
           <h2 className="nav-link">
             <Link
               className="nav-link-transparent"
+              to="/trivia"
+              style={{
+                textDecoration: 'none',
+              }}
+            >
+              Trivia
+            </Link>
+          </h2>
+          <h2 className="nav-link">
+            <Link
+              className="nav-link-transparent"
               to="/about-us"
               style={{
                 textDecoration: 'none',

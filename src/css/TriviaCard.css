@@ -1,0 +1,12 @@
+.trivia-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 50vh;
+}
+
+label > input[type=radio] {
+  width: auto;
+  margin: 0.5rem;
+}
