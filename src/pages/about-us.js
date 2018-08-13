@@ -53,7 +53,7 @@ class AboutUsPage extends Component {
                 <div className="secondary-page" style={{background: '#EAADAD'}}>
                   <h1 style={{color: 'white', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>About Us</h1>
                 </div>
-                <div style={{textAlign: 'center', marginTop: '4rem'}}>
+                <div style={{textAlign: 'center', marginTop: '2rem'}}>
                   <img className='about-us-image' src={heroImageUrl} style={{margin: 'auto', borderRadius: '50%', paddingRight: '1rem', paddingLeft: '1rem'}}/>
                 </div>
                 <ReactMarkdown className="about-us-body" source={aboutUsMarkdown} />
