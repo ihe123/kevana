@@ -4,10 +4,19 @@
   flex-wrap: wrap;
 }
 
+.invitation {
+  background: white;
+  box-shadow: 1px 1px 1px 1px darkred;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
 .invitation-card-img {
   max-height: 75vh;
-  margin: 0.5rem;
-  padding: 0.5rem;
-  box-shadow: 1px 1px 1px 1px darkred;
-  background: white;
+  object-fit: contain;
+  margin-bottom: 0;
 }

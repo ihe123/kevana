@@ -72,9 +72,15 @@ class RsvpPage extends Component {
                     <h2 style={{color: 'white', textAlign: 'center'}}>Scans of the Physical Cards</h2>
                   </div>
                   <div className='invitations-container' style={{background: '#F48788'}}>
-                    <img className='invitation-card-img' src={invitationFrontURL}/>
-                    <img className='invitation-card-img' src={invitationBackURL}/>
-                    <img className='invitation-card-img' src={rsvpCardURL} style={{height: '50vh'}}/>
+                    <div className='invitation'>
+                      <img className='invitation-card-img' src={invitationFrontURL}/>
+                    </div>
+                    <div className='invitation'>
+                      <img className='invitation-card-img' src={invitationBackURL}/>
+                    </div>
+                    <div className='invitation'>
+                      <img className='invitation-card-img rsvp' src={rsvpCardURL} style={{maxHeight: '50vh'}}/>
+                    </div>
                   </div>
                 </div>
           }
