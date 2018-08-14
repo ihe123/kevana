@@ -13,7 +13,7 @@ class TriviaCard extends Component {
           gameRoom === 'waitingRoom' ?
             <div style={{display: 'flex', flexDirection: 'column', padding: '1rem', alignItems: 'center'}}>
               <h3>Host a New Game:</h3>
-              <button onClick={ hostNewGame } style={{maxWidth: '230px'}}>Host a New Trivia Game</button>
+              <button onClick={ hostNewGame } style={{maxWidth: '230px', marginTop: '1rem'}}>Host a New Trivia Game</button>
               <h3 style={{paddingTop: '1rem'}}>Join an Existing Trivia Game:</h3>
               <GameRoomsList joinGame={joinGame}/>
             </div> :
