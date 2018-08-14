@@ -33,19 +33,19 @@ class RsvpPage extends Component {
         })
       })
 
-    storage.ref('invitations/Invitation_back.JPG').getDownloadURL().then(url => {
+    storage.ref('invitations/Invitation_back_compressed.jpg').getDownloadURL().then(url => {
       this.setState({
         invitationBackURL: url
       });
     });
 
-    storage.ref('invitations/Invitation_front.JPG').getDownloadURL().then(url => {
+    storage.ref('invitations/Invitation_front_compressed.jpg').getDownloadURL().then(url => {
       this.setState({
         invitationFrontURL: url
       });
     });
 
-    storage.ref('invitations/RSVP.JPG').getDownloadURL().then(url => {
+    storage.ref('invitations/RSVP_compressed.jpg').getDownloadURL().then(url => {
       this.setState({
         rsvpCardURL: url
       });
@@ -69,7 +69,7 @@ class RsvpPage extends Component {
                     <h1 style={{color: 'white', textAlign: 'center'}}>RSVP Link: <a href={rsvpLink}>Google Form</a></h1>
                   </div>
                   <div className="splash-container" style={{background: '#F48788', height: '30vh'}}>
-                    <h2 style={{color: 'white', textAlign: 'center'}}>Scans of the Physical Cards</h2>
+                    <h2 style={{color: 'white', textAlign: 'center'}}>Scans of the Physical Cards (but please fill out the Google Form)</h2>
                   </div>
                   <div className='invitations-container' style={{background: '#F48788'}}>
                     <div className='invitation'>
