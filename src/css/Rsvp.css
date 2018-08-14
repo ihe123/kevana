@@ -1,0 +1,13 @@
+.invitations-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.invitation-card-img {
+  max-height: 75vh;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  box-shadow: 1px 1px 1px 1px darkred;
+  background: white;
+}
